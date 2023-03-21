@@ -1,1 +1,1 @@
-# AI Course - FINKI
+# Artificial Intelligence Course - FCSE Skopje 
