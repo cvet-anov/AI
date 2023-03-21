@@ -458,6 +458,18 @@ class Snake(Problem):
         super().__init__(initial)
         self.goal = goal
 
+    def actions(self, state):
+        return self.successor(state).keys()
+
+    def result(self, state, action):
+        return self.successor(state)[action]
+
+    def goal_test(self, state):
+        return len(state[3]) == 0
+
+    def value(self):
+        return 1
+
     def successor(self, state):
         successors = dict()
         head_x, head_y = state[0][0], state[0][1]
@@ -597,17 +609,6 @@ class Snake(Problem):
                         successors["SvrtiLevo"] = ((head_x, head_y - 1), tuple(new_body), "down", tuple(apples))
         return successors
 
-    def actions(self, state):
-        return self.successor(state).keys()
-
-    def result(self, state, action):
-        return self.successor(state)[action]
-
-    def goal_test(self, state):
-        return len(state[3]) == 0
-
-    def value(self):
-        return 1
 
     def h(self, node):
         headx, heady = node.state[0][0],node.state[0][1]
